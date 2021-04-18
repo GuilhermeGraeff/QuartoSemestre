@@ -1,0 +1,49 @@
+Alunos: Guilherme S. Nerling, Guilherme Graeff
+
+O que você espera de um sistema? poder saber quando dinheiro vai sobrar no final do mês, o lucro final, e bruto, poder descrever as despesas do mês, notificações em casos extremos.
+
+Quais são suas complicações atuais? vê a necessidade de ter um aplicativo/software para ligado/atento a suas economias.
+
+Quais são suas fontes de renda? um assalariádo. 
+
+Você almeja integração com algum software ou algum outro aplicativo? uma agenda, seria conveniente, e talvez com o banco caso seja barato.
+
+Deseja que a aplicação rode em quais dispositivos? celular, Android.
+
+Precisa ter acesso offline? Sim.
+
+Deseja um gráfico para saber gastos passados? Sim.
+
+Quantas pessoas irão utilizar o aplicativo? duas, ele e sua esposa.
+
+Você deseja investir quanto dinheiro? R$3500,00, sem taxas mensais. 
+
+Qual o prazo para a realização da aplicação? 1 mês.
+
+
+Requisitos Funcionais:
+
+
+
+----ID------------------------------Requisito Funcional-------------------------------------------------------------Descrição do Requisito Funcional-----------------------
+  RF01				Gerenciamento de Finanças: 							É preciso que o sistema gerencie minhas finanças, listando despesas e 
+														fazendo cálculos que me retornem o balanço mensal de saldo.
+
+  RF02				Histórico de entradas/saídas: 							É necessário um histórico dos meses anteriores, representado graficamente.
+
+
+  RF03				Agendamento: 									Agendar pagamentos, para que não ocorra atrasos.
+
+
+  RF04				Cadastro de usuário: 								Ser possível cadastrar, atualizar e excluir usuários, para cada integrante 
+														da família manter o controle de suas entradas e saídas.
+
+
+  RF05				Cadastrar salário ou outro tipo de entrada singular (entradas): 		Ser possível cadastrar, atualizar e excluir salário, para poder manter um controle do saldo do usuário de 
+														maneira recorrente. Também deve ser possível adicionar saldo de fontes externas.
+
+
+  RF06				Cadastro de despesas (saídas): 							Cadastrar despesas recorrentes ou não. Exemplo de recorrente: Água, luz, aluguel, internet, compras parceladas e etc. 
+														Não recorrentes: ser possivel debitar saldo diretamente.
+
+

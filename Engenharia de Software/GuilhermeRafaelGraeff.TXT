@@ -1,0 +1,41 @@
+Identificação do entrevistado:
+•Nome: João Victor Martins
+•Empresa que trabalha: Zampronio - Classificadores de sementes
+•Função desempenhada: Desenvolvedor em TI
+•Tempo de experiência na área de software: 2 anos e meio.
+
+Quotes:
+• Quais os principais problemas/desafios enfrentados no desenvolvimento de software?
+----O entrevistado trabalha na área da TI desta empresa, ele ficou responsável de fazer o gerenciamento dos 
+dados da mesma, como é uma empresa que está a algum tempo no mercado ela não tem sistema bom de gerenciamento 
+de banco de dados, é mais um desafio, pois ele não é relacional. Ele encontrou dificuldades por ter que trabalhar 
+tanto na parte frontend como no backend, então é um pouco sobrecarregado, mas que é tranquilo de levar.
+----Palavras do entrevistado: "Os principais desafios é a gente ser responsável por todas as etapas 
+do desenvolvimento do 0, cuidar do backend, frontentd e infraestrutura, é cuidar de toda essa parte, 
+cuidar do banco de dados, então você tem que ser bom em tudo, sabendo o básico de todos os conceitos 
+que não se precisa ter conhecimento completo".
+-Aprender algo novo é desafiador
+-Relação das tabelas ainda é um desafio.
+-Ele entendia MySQl e está tendo que aprender POSTGRES.
+• Como eles buscam resolver /amenizar cada um destes problemas?  
+----Como ele tem que resolver todos os problemas, ele projeta com muito cuidado cada um de seus projetos e atualizações. 
+Ser autodidata o ajuda a resolver os problemas.
+----Palavras do entrevistado: "Tem que saber pesquisar, utilizar o Google, fóruns e outras ferramentas. Mantém contato com 
+diversas pessoas para agregar conhecimento e relações de apoio. Tentar entender a demanda e o problema e encapsular parte 
+por parte. Separar cada tarefa e resolver o proplema camada por camada."
+
+
+
+
+é para aplicar o trabalho no empreendimento? ou é mais uma simulação?
+
+Sobre a entrevista, pode ficar dificil de fazer a entrevista, e eu não gostaria de ser inconveniente com o tempo 
+da pessoa, como vai ser feito a entrevista?
+
+Pra mim é difícil entrar em contato/ entrevistar, levando em conta que a 
+gente tá fazendo o EAD para evitar contato com outras pessoas.
+
+
+
+
+

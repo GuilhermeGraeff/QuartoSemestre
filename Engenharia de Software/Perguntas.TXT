@@ -1,0 +1,27 @@
+A)
+Usuários chave:
+1º Márcio José de Paula: Funcionário, Mecânico, insere itens e remove itens, realiza chamado de
+serviço quando exerce a sua função de mecânico.
+2º Valdir Graeff: Dono, Proprietário do empreendimento, dá a baixa do total de vendas 
+diariamente e mensalmente.
+B)
+Pertinente---> Quais dispositivos estão disponíveis para o acesso?? Precisa ter acesso offline?
+
+Pertinente---> Quais retornos você gostaria de receber da aplicação? Somatório de entradas e baixas ao fim do mês? ou algum outro retorno?
+
+Pertinente---> Gostaria de receber o histórico de meses anteriores?
+
+Pertinente---> Quer diferente nível de acesso entre funcionário e dono?
+
+É pertinente mas não para a nossa simulação---> Quanto dinheiro você está disposto a investir para a realização? combinar com necessidade
+
+É pertinente mas não para a nossa simulação--->Quanto tempo tu precisa para a implementação? Combinar com necessidade
+
+Pertinente---> Como é feito atualmente e quais dificuldades você tem atualmente para controlar as suas despesas e recebimentos?
+
+Pertinente mas mais gerais---> Quais funcionalidades você espera que o software tenha?
+
+Pertinente---> Quem seriam os usuários finais?
+
+Pertinente---> Gostaria de separar em categorias os seus gastos? Exemplos: peças, custos gerais, funcionários...?
+

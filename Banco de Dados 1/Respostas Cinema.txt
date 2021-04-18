@@ -1,0 +1,16 @@
+select * from ;
+
+4- select f.titulo as NomeFilme, p.nome as NomeDiretor from filme f join pessoa p on codd=codp;
+
+5- select f.titulo as NomeFilme, p.nome as NomeDiretor from filme f join pessoa p on codd=codp where p.nome = 'Alfred';
+
+6- select distinct p.nome from pessoa p natural join elenco e where e.oscar='Y';
+
+7- select f.titulo, f.anol, f.dur, p.nome from filme f join elenco e on f.codf=e.codf join pessoa p on e.codp = p.codp
+order by 1;
+
+8- select f.titulo from filme f join avaliacao a on f.codf=a.codf where a.nestrelas = 5.0;
+
+9- select f.titulo from filme f join elenco e on f.codf=e.codf join pessoa p on e.codp=p.codp where p.nome ='Steven';
+
+10- 

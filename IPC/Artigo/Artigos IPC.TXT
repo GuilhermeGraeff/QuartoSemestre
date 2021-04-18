@@ -1,0 +1,53 @@
+Área: Inteligência Artificial.
+Sub-Área: Facial expression recognition, Computer Vision
+
+String de pesquisa: "artificial intelligence" + "Neural Network" + "Facial expression recognition" + "Real Time"
+Papers, artigos e etc:
+
+"Is Automatic Facial Expression Recognition of Emotions Coming to a Dead End?
+The Rise of The New Kids on the Block", 
+authors: Hatice Gunes and Hayley Hung.
+ 
+"Real-time Mobile Facial Expression Recognition System – A Case Study", 
+authors: Myunghoon Suk and  Balakrishnan Prabhakaran.
+
+"Real time facial expression recognition with AdaBoost",
+authors: Yubo Wang, Haizhou Ai, Bo Wu and Chang Huang.
+
+"Facial Expression Recognition using Convolutional Neural Network with Data Augmentation"
+Authors: Tawsin Uddin Ahmed, Sazzad Hossain, Mohammad Shahadat Hossain, Raihan Ul Islam§and Karl Andersson.
+
+Problem: The data augmentation process and the way that they collected the dataset.
+
+
+"Deep Learning for Real-Time Robust Facial Expression Recognition on a Smartphone"
+Authors: Inchul SONG, Hyun-Jun KIM, and Paul Barom JEON.
+
+"Convolution Neural Network for Automatic Facial Expression Recognition"
+Authors: Xiaoguang Chen, Xuan Yang, Maosen Wang and Jiancheng Zou.
+
+
+
+
+Área: Visão computacional/inteligência artificial. (ainda estou pesquis)
+
+Sub-Área: Facial expression recognition using neural network technics.
+
+Desde que o Professor Fernando Bevilacqua apresentou sua pesquisa para os aulunos da Uffs, 
+eu me interessei no assunto, e para realizar este trabalho eu pesquisei um pouco mais a fundo
+sobre em atigos e pesquisas.Na leitura destes artigos notei que diferentes técnicas utilizam 
+diferentes métodos de coleta de dados, então pretendo me aprofundar nos resultados de diferentes 
+fontes de dados para comparar suas efetividades e se podem háver falsos verdadeiros a partir de 
+diferentes fontes de dados. Exemplos de fontes, Big Data (icones de redes sociais e etc), 
+Uma pequena quantidade de dados utilizando Data Augmentation, em tempo real e outros.
+
+Como eu tenho Inteligência artificial no sétimo semestre, eu não tenho o dominio sobre alguns conceitos
+técnicos, acredito que essa pesquisa será interessante para conhecer um pouco mais 
+sobre esta área do conhecimento que eu tanto admiro.
+
+ 
+
+R
+
+
+
