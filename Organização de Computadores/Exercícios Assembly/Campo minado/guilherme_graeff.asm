@@ -3,12 +3,15 @@
 # e espaços de memória reservados
 		.data
 campo:			.space		324   # esta versão suporta campo de até 9 x 9 posições de memória
+interface:		.space		324 
 salva_S0:		.word		0
 salva_ra:		.word		0
 salva_ra1:		.word		0
+strShowInterface: .string	"Interface:"
 strPulaLinha:	.string	"\n"
 strEspaco:	.string	" "
 strImprimeCampo:	.string	"Imprimindo Campo"
+strCasaFechada:	.string	"-"
 
 #########################################################
 # necessário em caso de debug da funcao
@@ -32,8 +35,13 @@ main:
 	la 	a0, campo
 	li	a1,0
 	addi	a1, zero, 8
-	jal	IMPRIME_CAMPO
+	jal	IMPRIME_VETOR
 	###############m de imprimindo a matriz###################
+	li	a0,0
+	la 	a0, interface
+	li	a1,0
+	addi	a1, zero, 8
+	jal 	DISPLAYINTERFACE
 	nop
 fim:   ret
 
@@ -60,8 +68,61 @@ fim:   ret
 #     bombas++  
 #
 ############################################################
-IMPRIME_CAMPO:
+DISPLAYINTERFACE:
+	li	a2,0
 	addi	a2,a0,0
+	
+	li	a7, 4
+	la	a0, strPulaLinha
+	ecall
+	
+	li	a7, 4
+	la	a0, strShowInterface
+	ecall
+	
+	li	t5,0      
+	addi	t5,a1,0   
+	
+	li	t4,0
+INICIO_LACO_DISPLAY:
+	li	t3,0
+	
+	li	t6,0	 
+	addi	t6,a1,0  
+	
+	li	a7, 4
+	la	a0, strPulaLinha
+	ecall
+
+INICIO_LACO_INTERNO_DISPLAY:
+	
+	li	a7, 4
+	la	a0, strCasaFechada
+	ecall
+	
+	addi	a2, a2, 4	
+	
+	li	a7, 4
+	la	a0, strEspaco
+	ecall
+	
+	addi t3,t3,1
+	blt	t3, t6, INICIO_LACO_INTERNO_DISPLAY
+	
+	addi t4,t4,1
+	blt	t4, t5, INICIO_LACO_DISPLAY
+	
+	j	fim
+	
+
+IMPRIME_VETOR:
+	li	a2,0
+	addi	a2,a0,0
+	
+
+	li	a7, 4
+	la	a0, strPulaLinha
+	ecall
 	
 	li	a7, 4			#}
 	la	a0, strImprimeCampo	#}   Imprimindo Campo
@@ -96,10 +157,10 @@ INICIO_LACO_INTERNO_IMPRIME:
 	ecall
 	
 	addi t3,t3,1
-	ble	t3, t6, INICIO_LACO_INTERNO_IMPRIME
+	blt	t3, t6, INICIO_LACO_INTERNO_IMPRIME
 	
 	addi t4,t4,1
-	ble	t4, t5, INICIO_LACO_IMPRIME
+	blt	t4, t5, INICIO_LACO_IMPRIME
 	
 	j	fim
 	
