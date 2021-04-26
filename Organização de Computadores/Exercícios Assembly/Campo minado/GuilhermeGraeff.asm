@@ -1,6 +1,6 @@
 ###############################################################
-#A fun√ß√£o insere_bombas necessita os seguintes r√≥tulos
-# e espa√ßos de mem√≥ria reservados
+#A funÁ„o insere_bombas necessita os seguintes rÛtulos
+# e espaÁos de memÛria reservados
 		.data
 campo:			.space		256
 salva_S0:		.word		0
@@ -11,17 +11,17 @@ strPulaLinha:	.string	"\n"
 strEspaco:	.string	" "
 strCasaComFlag:	.string	"F "
 strEspacoComBarra:	.string	"  |"
-strLostTheGame:	.string	"\n√â amig√£o, voc√™ perdeu o jogo.\n"
-strImprimeCampo:	.string	"Imprimindo Campo, mostrando a localiza√ß√£o das bombas"
+strLostTheGame:	.string	"\n… amig„o, vocÍ perdeu o jogo.\n"
+strImprimeCampo:	.string	"Imprimindo Campo, mostrando a localizaÁ„o das bombas"
 strCasaFechada:	.string	"O "
 strCasaAberta:	.string	"/ "
-strFlagWarning:	.string	"\nEsta casa cont√™m uma Flag, retire a flag para poder revelar-la\n"
-strCondicionalFlagRevela:	.string	"Digite 0 para revelar o conte√∫do da casa, digite 1 para colocar/retirar uma flag...:"
-strPosX:	.string	"Digite a LINHA da casa que gostaria de realizar a a√ß√£o(de 0 a 7)...:"
-strPosY:	.string	"Digite a COLUNA da casa que gostaria de realizar a a√ß√£o(de 0 a 7)...:"
+strFlagWarning:	.string	"\nEsta casa contÍm uma Flag, retire a flag para poder revelar-la\n"
+strCondicionalFlagRevela:	.string	"Digite 0 para revelar o conte˙do da casa, digite 1 para colocar/retirar uma flag...:"
+strPosX:	.string	"Digite a LINHA da casa que gostaria de realizar a aÁ„o(de 0 a 7)...:"
+strPosY:	.string	"Digite a COLUNA da casa que gostaria de realizar a aÁ„o(de 0 a 7)...:"
 
 #########################################################
-# necess√°rio em caso de debug da funcao
+# necess·rio em caso de debug da funcao
 #espaco:			.asciz		" "
 #nova_linha:		.asciz		"\n"
 #posicao:		.asciz		"\nPosicao: "
@@ -30,8 +30,8 @@ strPosY:	.string	"Digite a COLUNA da casa que gostaria de realizar a a√ß√£o(de 0
 	.text
 
 ########################################################
-# fun√ß√£o main somente para teste. N√£o deve ser copiada 
-#  para o c√≥digo do trabalho
+# funÁ„o main somente para teste. N„o deve ser copiada 
+#  para o cÛdigo do trabalho
 main:
 	la 	a0, campo
 	addi	a1, zero, 8
@@ -117,15 +117,15 @@ REVELACASA:
 						#retorna em a0 9 para as casas que ficam no meio
 	mv	t5,a0
 	li	a0,0
-	la 	a0, campo	#endere√ßo campo
+	la 	a0, campo	#endereÁo campo
 	li	a1,0
 	addi	a1, zero, 8	#tamanho do campo
 	li	a2,0
-	addi	a5,t5,0	#Caracter√≠stica da posi√ß√£o
+	addi	a5,t5,0	#CaracterÌstica da posiÁ„o
 	li	a3,0
-	addi	a3,t3,0	#posi√ß√£o X
+	addi	a3,t3,0	#posiÁ„o X
 	li	a4,0
-	addi	a4,t4,0	#posi√ß√£o Y
+	addi	a4,t4,0	#posiÁ„o Y
 	li	a6,0
 	jal	ATUALIZA_VETOR
 	
@@ -136,10 +136,10 @@ fim:
 
 
 ############################################################
-# A fun√ß√£o insere_bombas est√° implementada abaixo.
-# Todo o c√≥digo a seguir, mais os rotulos acima deve 
-# ser colocado junto ao c√≥digo do trabalho de campo minado
-# entrada: a0 endere√ßo de memoria do inicio da matriz campo
+# A funÁ„o insere_bombas est· implementada abaixo.
+# Todo o cÛdigo a seguir, mais os rotulos acima deve 
+# ser colocado junto ao cÛdigo do trabalho de campo minado
+# entrada: a0 endereÁo de memoria do inicio da matriz campo
 #          a1 quantidade de linhas da matriz campo
 # saida: nao retorna nada
 ############################################################
@@ -147,11 +147,11 @@ fim:
 #
 #  Salva registradores
 #  Carrega numero de sementes sorteadas = 15
-#  Le semente para fun√ß√£o de numero pseudo randomico
+#  Le semente para funÁ„o de numero pseudo randomico
 #  while (bombas < x) 
 #     sorteia linha
 #     sorteia coluna
-#     le posi√ß√£o pos = (L * tam + C) * 4
+#     le posiÁ„o pos = (L * tam + C) * 4
 #     if(pos != 9)
 #    	  grava posicao pos = 9
 #     bombas++  
@@ -870,14 +870,14 @@ INICIO_LACO_INTERNO_IMPRIME:
 	
 	j	fim
 	
-###################### Fun√ß√£o que insere as bombas no Campo ######################
+###################### FunÁ„o que insere as bombas no Campo ######################
 INSERE_BOMBA:
 		la	t0, salva_S0
 		sw  	s0, 0 (t0)		# salva conteudo de s0 na memoria
 		la	t0, salva_ra
 		sw  	ra, 0 (t0)		# salva conteudo de ra na memoria
 		
-		add 	t0, zero, a0		# salva a0 em t0 - endere√ßo da matriz campo
+		add 	t0, zero, a0		# salva a0 em t0 - endereÁo da matriz campo
 		add 	t1, zero, a1		# salva a1 em t1 - quantidade de linhas 
 
 QTD_BOMBAS:
@@ -888,10 +888,10 @@ QTD_BOMBAS:
 		add 	a1, zero, a0		# coloca a semente em a1
 INICIO_LACO:
 		beq 	t2, t3, FIM_LACO
-		add 	a0, zero, t1 		# carrega limite para %	(resto da divis√£o)
+		add 	a0, zero, t1 		# carrega limite para %	(resto da divis„o)
 		jal 	PSEUDO_RAND
 		add 	t4, zero, a0		# pega linha sorteada e coloca em t4
-		add 	a0, zero, t1 		# carrega limite para % (resto da divis√£o)
+		add 	a0, zero, t1 		# carrega limite para % (resto da divis„o)
    		jal 	PSEUDO_RAND
 		add 	t5, zero, a0		# pega coluna sorteada e coloca em t5
 
@@ -903,22 +903,22 @@ LE_POSICAO:
 		add  	t4, t4, t0  		# calcula Base + deslocamento
 		lw   	t5, 0(t4)   		# Le posicao de memoria LxC
 VERIFICA_BOMBA:		
-		addi 	t6, zero, 9		# se posi√ß√£o sorteada j√° possui bomba
-		beq  	t5, t6, PULA_ATRIB	# pula atribui√ß√£o 
-		sw   	t6, 0(t4)		# sen√£o coloca 9 (bomba) na posi√ß√£o
+		addi 	t6, zero, 9		# se posiÁ„o sorteada j· possui bomba
+		beq  	t5, t6, PULA_ATRIB	# pula atribuiÁ„o 
+		sw   	t6, 0(t4)		# sen„o coloca 9 (bomba) na posiÁ„o
 		addi 	t3, t3, 1		# incrementa quantidade de bombas sorteadas
 PULA_ATRIB:
 		j	INICIO_LACO
 
 FIM_LACO:					# recupera registradores salvos
 		la	t0, salva_S0
-		lw  	s0, 0(t0)		# recupera conteudo de s0 da mem√≥ria
+		lw  	s0, 0(t0)		# recupera conteudo de s0 da memÛria
 		la	t0, salva_ra
-		lw  	ra, 0(t0)		# recupera conteudo de ra da mem√≥ria		
+		lw  	ra, 0(t0)		# recupera conteudo de ra da memÛria		
 		jr 	ra			# retorna para funcao que fez a chamada
 
 
-###################### Fun√ß√£o que retorna n√∫mero "aleat√≥rio" ######################
+###################### FunÁ„o que retorna n˙mero "aleatÛrio" ######################
 PSEUDO_RAND:
 		addi t6, zero, 125  		# carrega constante t6 = 125
 		lui  t5, 682			# carrega constante t5 = 2796203
@@ -928,7 +928,7 @@ PSEUDO_RAND:
 		rem  a1, a1, t5			# a = a % 2796203
 		rem  a0, a1, a0			# a % lim
 		bge  a0, zero, EH_POSITIVO  	# testa se valor eh positivo
-		addi t4, zero, -1           	# caso n√£o 
+		addi t4, zero, -1           	# caso n„o 
 		mul  a0, a0, t4		    	# transforma em positivo
 EH_POSITIVO:	
 		ret				# retorna em a0 o valor obtido

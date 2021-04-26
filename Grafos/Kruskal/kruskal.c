@@ -168,12 +168,6 @@ void kruskal (Lista *lista, int size_graph, int size_edges){
     for(int i = 0; i<size_edges; i++){
         printf("%d",caminho[i]);
     }
-    // kruskTable[0]=-6;
-    // kruskTable[1]=2;
-    // kruskTable[2]=3;
-    // kruskTable[3]=4;
-    // kruskTable[4]=0;
-    //printf("Nodo raiz = %d, Valor do nodo raiz = %d", find_root(kruskTable, 1),find_root_value(kruskTable, 1));
     int passo = 0;
     int somatorio  = 0;
 
@@ -181,16 +175,15 @@ void kruskal (Lista *lista, int size_graph, int size_edges){
         printf("Explorando aresta (%d) <-%d-> (%d)\n", aux->origem, aux->peso, aux->destino);
         printf("      Vertice->");
         for(int i = 0; i < size_graph; i++ ){
-            printf("| %2d ",i);
+            printf("| %3d ",i);
         }
         printf("|\n");
         printf("      raiz   ->");
         for(int i = 0; i < size_graph; i++ ){
-            printf("| %2d ",kruskTable[i]);
+            printf("| %3d ",kruskTable[i]);
         }
         printf("|\n");
         if(kruskTable[aux->origem] < 0 && kruskTable[aux->destino] < 0){
-            //printf("a :  %d    %d   ", kruskTable[aux->origem], kruskTable[aux->destino]);
             if(kruskTable[aux->origem] < kruskTable[aux->destino]){
                 kruskTable[aux->origem]--;
                 kruskTable[aux->destino]=aux->origem;
@@ -208,7 +201,6 @@ void kruskal (Lista *lista, int size_graph, int size_edges){
         }
         else if(kruskTable[aux->origem] < 0 && kruskTable[aux->destino] >= 0){
 
-            //printf("b     %d,     %d",kruskTable[aux->origem] ,kruskTable[aux->destino] );
             if(aux->origem == find_root(kruskTable,kruskTable[aux->destino])){
                 printf("");
             }
@@ -228,7 +220,6 @@ void kruskal (Lista *lista, int size_graph, int size_edges){
             }
         }
         else if(kruskTable[aux->origem] >= 0 && kruskTable[aux->destino] < 0){
-            //printf("c :  %d    %d   ", kruskTable[aux->origem], kruskTable[aux->destino]);
             if(find_root(kruskTable,kruskTable[aux->origem]) == aux->destino){
                 printf("");
             }
@@ -248,7 +239,6 @@ void kruskal (Lista *lista, int size_graph, int size_edges){
             }
         }
         else if( kruskTable[aux->origem] >= 0 && kruskTable[aux->destino] >= 0){
-            //printf("d :  %d    %d   ", kruskTable[aux->origem], kruskTable[aux->destino]);
             if(find_root(kruskTable,kruskTable[aux->origem]) == find_root(kruskTable,kruskTable[aux->destino])){
                 printf("");
             }
@@ -269,9 +259,7 @@ void kruskal (Lista *lista, int size_graph, int size_edges){
         }
         printf("\n      Caminho atual:\n");
         printf("      ");
-        // for(int i = 0; i<size_edges; i++){
-        //     printf("%d",caminho[i]);
-        //}
+
         for(int z = 0;  z<size_edges; z+=2){
             if(caminho[z]==-1){
                 break;
