@@ -1,0 +1,5 @@
+RF001 Manter cadastro de clientes
+RF002 Manter orçamento serviços
+RF003 Manter cadastro de ordem de serviços (Atualizar estoque e Atualizar caixa)
+RF004 Manter cadastro de produtos
+RF007 Manter de despesas  (Atualizar caixa)

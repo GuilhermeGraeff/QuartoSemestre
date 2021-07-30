@@ -9,11 +9,12 @@ salva_ra1:		.word		0
 strShowInterface: .string	"Interface:\n    0  1  2  3  4  5  6  7\n    _  _  _  _  _  _  _  _"
 strPulaLinha:	.string	"\n"
 strEspaco:	.string	" "
+strGanhou:	.string	"\nParabéns, você ganhou"
 strCasaComFlag:	.string	"F "
 strEspacoComBarra:	.string	"  |"
 strLostTheGame:	.string	"\nÉ amigão, você perdeu o jogo.\n"
 strImprimeCampo:	.string	"Imprimindo Campo, mostrando a localização das bombas"
-strCasaFechada:	.string	"O "
+strCasaFechada:	.string	"- "
 strCasaAberta:	.string	"/ "
 strFlagWarning:	.string	"\nEsta casa contêm uma Flag, retire a flag para poder revelar-la\n"
 strCondicionalFlagRevela:	.string	"Digite 0 para revelar o conteúdo da casa, digite 1 para colocar/retirar uma flag...:"
@@ -37,12 +38,14 @@ main:
 	addi	a1, zero, 8
 	jal 	INSERE_BOMBA
 MAINRUN:
-	#li	a0,0
-	#la 	a0, campo
-	#li	a1,0
-	#addi	a1, zero, 8
-	#jal	IMPRIME_VETOR
+	li	a0,0
+	la 	a0, campo
+	li	a1,0
+	addi	a1, zero, 8
+	jal	IMPRIME_VETOR
 	
+	
+	#Este é o laço principal, ele se repete até que o jogo acabe.
 	la 	a0, campo
 	li	a1,0
 	addi	a1, zero, 8
@@ -61,6 +64,7 @@ MAINRUN:
 	la	a0, strPulaLinha
 	ecall
 	
+	#Seleciona se é para revelar casa ou colocar bandeira
 	li	a7, 5 
 	ecall	
 	mv	t6, a0
@@ -73,6 +77,7 @@ MAINRUN:
 	la	a0, strPosX
 	ecall
 	
+	#lê a linha a fazer a operação
 	li	a7, 5 
 	ecall	
 	mv	t3, a0
@@ -85,6 +90,7 @@ MAINRUN:
 	la	a0, strPosY
 	ecall
 	
+	#lê a coluna a fazer a operação
 	li	a7, 5 
 	ecall	
 	mv	t4, a0
@@ -93,8 +99,9 @@ MAINRUN:
 	la	a0, strPulaLinha
 	ecall
 	
+	# Seleciona a opção de colocar flac ou revelar casa
 	beq t6,zero, REVELACASA
-	#coloca flag
+	# Colocando flag
 	li	a0,0
 	la 	a0, campo
 	li	a1,0
@@ -103,13 +110,16 @@ MAINRUN:
 	addi	a2, t3, 0
 	li	a3,0
 	addi	a3, t4, 0
+	# Chamar a função que coloca a flag
 	jal	COLOCA_FLAG
 	
 REVELACASA:
+	
 	li	a0,0
 	addi	a0, t3, 0
 	li	a1,0
 	addi	a1, t4, 0
+	# Calcula
 	jal	CALCULACANTOBORDAMEIO	#retorna em a0 1 para canto superior esquerdo, 2 para canto superior direito
 						#              3 para canto inferior esquerdo, 4 para inferior direito
 						#retorna em a0 5 para a borda de cima, 6 para a borda de baixo
@@ -126,7 +136,6 @@ REVELACASA:
 	addi	a3,t3,0	#posição X
 	li	a4,0
 	addi	a4,t4,0	#posição Y
-	li	a6,0
 	jal	ATUALIZA_VETOR
 	
 	j	MAINRUN
@@ -158,18 +167,13 @@ fim:
 #
 ############################################################
 
-
-
-
+	#Soma 10 na posição calculada ou subtrai 10 se já for uma flag
 COLOCA_FLAG:
-	li	t5,0      #}
-	addi	t5,a1,0   #}    i = 0
-	
+	li	t5,0   
+	addi	t5,a1,0   
 	li	t4,0
-	
 INICIO_LACO_COLOCAFLAG:
-	li	t3,0	 #}
-	
+	li	t3,0	 
 	li	t6,0	 
 	addi	t6,a1,0  
 INICIO_LACO_INTERNO_COLOCAFLAG:
@@ -194,40 +198,27 @@ CONTINUA_FLAG:
 	blt	t4, t5, INICIO_LACO_COLOCAFLAG
 	
 	j	fim
-
-
-
-
-
+	#Coloca na  posição selecionada a soma das bombas aos arredores se não tiver flag ou se não for uma bomba.
 ATUALIZA_VETOR:
-	
 	li	a2,0
 	addi	a2,a0,0
-	
 	li	t5,0    
 	addi	t5,a1,0  
-	
 	li	t4,0
-	
 INICIO_LACO_ATUALIZA:
 	li	t3,0	
-	
 	li	t6,0	 
 	addi	t6,a1,0  
-	
 INICIO_LACO_INTERNO_ATUALIZA:
-	
 	bne a4,t3 ,CONTINUE	
 	bne a3,t4 ,CONTINUE	
 	li t0,19
 	li t1, 10
 	lw s10, 0(a2)
 	blt s10,t1,NOFLAG
-	
 	li	a7, 4
 	la	a0, strFlagWarning
 	ecall
-	
 	j 	CONTINUE
 NOFLAG:
 	addi t1,t1,-1
@@ -266,7 +257,6 @@ EZERO1:
 	li s11, -1
 	sw  s11, 0(a2)
 	j	CONTINUE
-	
 NEXTTO2:
 	li t2, 2
 	bne a5,t2,NEXTTO3
@@ -296,13 +286,11 @@ CASE23_HASNOBOMB:
 EZERO2:
 	li s11, -1
 	sw  s11, 0(a2)
-	j	CONTINUE
-		
+	j	CONTINUE	
 NEXTTO3:
 	li t2, 3
 	bne a5,t2,NEXTTO4
 	#caso 3	
-	#caso 2
 	li s11, 0
 	lw s1, -32(a2)
 	lw s2, -28(a2)
@@ -329,7 +317,6 @@ EZERO3:
 	li s11, -1
 	sw  s11, 0(a2)
 	j	CONTINUE
-	
 NEXTTO4:
 	li t2, 4
 	bne a5,t2,NEXTTO5
@@ -401,13 +388,11 @@ CASE55_HASNOBOMB:
 EZERO5:
 	li s11, -1
 	sw  s11, 0(a2)
-	j	CONTINUE
-		
+	j	CONTINUE	
 NEXTTO6:
 	li t2, 6
 	bne a5,t2,NEXTTO7
 	#caso 6
-	
 	li s11, 0
 	lw s1, -36(a2)
 	lw s2, -32(a2)
@@ -450,7 +435,6 @@ NEXTTO7:
 	li t2, 7
 	bne a5,t2,NEXTTO8
 	#caso 7
-	
 	li s11, 0
 	lw s1, -32(a2)
 	lw s2, -28(a2)
@@ -489,7 +473,6 @@ EZERO7:
 	li s11, -1
 	sw  s11, 0(a2)
 	j	CONTINUE
-	
 NEXTTO8:
 	li t2, 8
 	bne a5,t2,NEXTTO9
@@ -532,7 +515,6 @@ EZERO8:
 	li s11, -1
 	sw  s11, 0(a2)
 	j	CONTINUE
-		
 NEXTTO9:
 	#caso 9
 	li s11, 0
@@ -592,17 +574,14 @@ EZERO9:
 	sw  s11, 0(a2)
 	j	CONTINUE
 CONTINUE:
-	
 	addi	a2, a2, 4
 	addi t3,t3,1
 	blt	t3, t6, INICIO_LACO_INTERNO_ATUALIZA
 	addi t4,t4,1
 	blt	t4, t5, INICIO_LACO_ATUALIZA
-	
 	j	fim
-	
+	#Essa função devolve qual canto que é se for um canto, qual borda que é se for uma borda ou se é uma casa que fica no meio.
 CALCULACANTOBORDAMEIO:
-	#Eu tenho em a0 o valor de x e em a1 o valor de y
 	li	t0, 1
 	li	t1, 6
 	blt	a0, t0,TANABORDADECIMA
@@ -640,7 +619,6 @@ TANABORDADIREITA:
 	bgt	a0, t1,TANOCANTOINFERIORDIREITO
 	li 	a0, 8
 	ret
-	
 TANOCANTOSUPERIORESQUERDO:
 	li 	a0, 1
 	ret
@@ -653,46 +631,39 @@ TANOCANTOINFERIORESQUERDO:
 TANOCANTOINFERIORDIREITO:
 	li 	a0, 4
 	ret
-
-
-	
-	
+	#Essa função pega a matriz e interpreta, se tem bomba ou 0 printa '-', 
+	#					      se tem um número > 0 e < 9 printa o número,
+	#					      se tem -1(nenhuma bomba ao redor) printa '/'
+	#					      se o número for > 10 printa 'F' de flag
 DISPLAYINTERFACE:
+	li a6, 0
 	li	a2,0
 	addi	a2,a0,0
-	
 	li	a7, 4
 	la	a0, strPulaLinha
 	ecall
-	
 	li	a7, 4
 	la	a0, strShowInterface
 	ecall
-	
 	li	t5,0      
 	addi	t5,a1,0   
-	
 	li	t4,0
 INICIO_LACO_DISPLAY:
 	li	t3,0
-	
 	li	t6,0	 
 	addi	t6,a1,0  
-	
 	li	a7, 4
 	la	a0, strPulaLinha
 	ecall
-	
 	li a0,0
 	li	a7, 1
 	addi	a0, t4,0
 	ecall
-	
 	li	a7, 4
 	la	a0, strEspacoComBarra
 	ecall
-
 INICIO_LACO_INTERNO_DISPLAY:
+	#para cada casa verifica squal é o valor que está ali
 	lw s11, 0(a2)
 	li s0,0
 	li s1,1
@@ -706,8 +677,7 @@ INICIO_LACO_INTERNO_DISPLAY:
 	li s9,9
 	li s10,19
 	li t0,-1
-	li t1,10
-
+	li t1,1
 	bne s11, s0, NAOEZERO
 	li	a7, 4
 	la	a0, strCasaFechada
@@ -721,6 +691,7 @@ NAOEZERO:
 	li	a7, 4
 	la	a0, strEspaco
 	ecall
+	addi	a6, a6,1
 NAOEUM:
 	bne s11, s2, NAOEDOIS
 	li a0,0
@@ -730,6 +701,7 @@ NAOEUM:
 	li	a7, 4
 	la	a0, strEspaco
 	ecall
+	addi	a6, a6,1
 NAOEDOIS:	
 	bne s11, s3, NAOETRES
 	li a0,0
@@ -739,6 +711,7 @@ NAOEDOIS:
 	li	a7, 4
 	la	a0, strEspaco
 	ecall
+	addi	a6, a6,1
 NAOETRES:
 	bne s11, s4, NAOEQUATRO
 	li a0,0
@@ -748,6 +721,7 @@ NAOETRES:
 	li	a7, 4
 	la	a0, strEspaco
 	ecall
+	addi	a6, a6,1
 NAOEQUATRO:
 	bne s11, s5, NAOECINCO
 	li a0,0
@@ -757,6 +731,7 @@ NAOEQUATRO:
 	li	a7, 4
 	la	a0, strEspaco
 	ecall
+	addi	a6, a6,1
 NAOECINCO:
 	bne s11, s6, NAOESEIS
 	li a0,0
@@ -766,6 +741,7 @@ NAOECINCO:
 	li	a7, 4
 	la	a0, strEspaco
 	ecall
+	addi	a6, a6,1
 NAOESEIS:
 	bne s11, s7, NAOESETE
 	li a0,0
@@ -775,6 +751,7 @@ NAOESEIS:
 	li	a7, 4
 	la	a0, strEspaco
 	ecall
+	addi	a6, a6,1
 NAOESETE:
 	bne s11, s8, NAOEOITO
 	li a0,0
@@ -784,6 +761,7 @@ NAOESETE:
 	li	a7, 4
 	la	a0, strEspaco
 	ecall
+	addi	a6, a6,1
 NAOEOITO:
 	bne s11, s9, NAOENOVE
 	li	a7, 4
@@ -799,51 +777,44 @@ NAOEDEZENOVE:
 	li	a7, 4
 	la	a0, strCasaAberta
 	ecall
+	addi	a6, a6,1
 NAOEMENOSUM:
 	bne t1, s11, CONTINUARINTERFACE
 	li	a7, 4
 	la	a0, strCasaComFlag
 	ecall
 CONTINUARINTERFACE:
-	
 	addi	a2, a2, 4	
-	
 	li	a7, 4
 	la	a0, strEspaco
 	ecall
-	
 	addi t3,t3,1
 	blt	t3, t6, INICIO_LACO_INTERNO_DISPLAY
-	
 	addi t4,t4,1
 	blt	t4, t5, INICIO_LACO_DISPLAY
-	
+	li s0,56
+	bne a6, s0, NAOGANHOU
+	li	a7, 4
+	la	a0, strGanhou
+	ecall
+	j	fimfim
+NAOGANHOU:
 	j	fim
-	
-
+	# Imprime a matriz com seus números normais, para questões de debug e para quando perde.
 IMPRIME_VETOR:
 	li	a2,0
 	addi	a2,a0,0
-	
-
 	li	a7, 4
 	la	a0, strPulaLinha
 	ecall
-	
-	li	a7, 4			#}
-	la	a0, strImprimeCampo	#}   Imprimindo Campo
+	li	a7, 4			
+	la	a0, strImprimeCampo	
 	ecall
-	
-	li	t5,0      #}
-	addi	t5,a1,0   #}    i = 0
-	
+	li	t5,0      
+	addi	t5,a1,0   
 	li	t4,0
-	
 INICIO_LACO_IMPRIME:
-	li	t3,0	 #}
-	
-	
-	
+	li	t3,0	
 	li	t6,0	 
 	addi	t6,a1,0  
 	
@@ -851,23 +822,17 @@ INICIO_LACO_IMPRIME:
 	la	a0, strPulaLinha
 	ecall
 INICIO_LACO_INTERNO_IMPRIME:
-	
 	li	a7, 1
 	lw	a0, 0(a2)
 	ecall
-	
 	addi	a2, a2, 4
-	
 	li	a7, 4
 	la	a0, strEspaco
 	ecall
-	
 	addi t3,t3,1
 	blt	t3, t6, INICIO_LACO_INTERNO_IMPRIME
-	
 	addi t4,t4,1
 	blt	t4, t5, INICIO_LACO_IMPRIME
-	
 	j	fim
 	
 ###################### Função que insere as bombas no Campo ######################
@@ -934,6 +899,7 @@ EH_POSITIVO:
 		ret				# retorna em a0 o valor obtido
 
 fimfim:
+	#valor final
 	li	a0,0
 	la 	a0, campo
 	li	a1,0
